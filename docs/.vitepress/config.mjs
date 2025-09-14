@@ -8,6 +8,10 @@ export default defineConfig({
     ['link', { rel: 'icon', href: 'https://wmimg.com/i/1169/2025/09/68c4fed991a78.png' }]
     ],
   
+export default {
+  // 如果你的仓库名为 'my-repo'，那么 base 就设置为 '/my-repo/'
+  base: process.env.NODE_ENV === 'production' ? '/CN-e-learning/' : '/',
+    }
   // 主题配置
   themeConfig: {
     // 导航栏
