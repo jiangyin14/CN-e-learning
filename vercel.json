@@ -2,12 +2,16 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build"
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "docs/.vitepress/dist"
+      }
     }
   ],
-  "build": {
-    "env": {
-      "NPM_ONLY": "false"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/docs/.vitepress/dist/$1"
     }
-  }
+  ]
 }
