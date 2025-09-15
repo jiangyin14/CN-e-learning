@@ -9,7 +9,7 @@ export default defineConfig({
   ],
   
   // 修改这里：直接指定基础路径
-  base: '/CN-e-learning/',
+  base: '/',
   
   // 主题配置
   themeConfig: {
