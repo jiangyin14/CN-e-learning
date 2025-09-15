@@ -8,8 +8,8 @@ export default defineConfig({
     ['link', { rel: 'icon', href: 'https://wmimg.com/i/1169/2025/09/68c4fed991a78.png' }]
   ],
   
-  // 基础路径配置
-  base: process.env.NODE_ENV === 'production' ? '/CN-e-learning/' : '/',
+  // 修改这里：直接指定基础路径
+  base: '/CN-e-learning/',
   
   // 主题配置
   themeConfig: {
