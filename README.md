@@ -64,4 +64,4 @@ npm run docs:build
 
 ## 许可证
 
-本项目采用 [ISC 许可证](LICENSE)。
+本项目采用 [MIT 许可证](LICENSE)，文档采用 [CC BY-NC-ND 4.0 许可证](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en)。
