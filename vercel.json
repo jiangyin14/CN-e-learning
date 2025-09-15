@@ -12,12 +12,6 @@
     {
       "src": "/(.*)",
       "dest": "/docs/.vitepress/dist/$1"
-    },
-    {
-      "src": "/CN-e-learning/(.*)",
-      "dest": "/docs/.vitepress/dist/$1"
     }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": false
+  ]
 }
