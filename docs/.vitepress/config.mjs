@@ -1,21 +1,31 @@
 import { defineConfig } from 'vitepress'
+import mdItCustomAttrs from 'markdown-it-custom-attrs'
 
 export default defineConfig({
   title: '电教委员指南',
   description: '教你如何做一名优秀的电教委员（网站装修中）',
-
+  
   head: [
-    ['link', { rel: 'icon', href: 'https://wmimg.com/i/1169/2025/09/68c4fed991a78.png' }]
+    ['link', { rel: 'icon', href: 'https://wmimg.com/i/1169/2025/09/68c4fed991a78.png' }],
+    ['link', { rel: "stylesheet", href: "https://cdn.jsdmirror.com/npm/@fancyapps/ui/dist/fancybox.css" }],
+    ['script', { src: "https://cdn.jsdmirror.com/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" }],
   ],
 
   base: '/',
+  
+  markdown: {
+    config: (md) => {
+      md.use(mdItCustomAttrs, 'image', {
+        'data-fancybox': "gallery"
+      })
+    }
+  },
 
   themeConfig: {
     nav: [
       { text: '指南', link: '/guide/dev' }
     ],
 
-    // 侧边栏
     sidebar: {
       '/guide/': [
         {
