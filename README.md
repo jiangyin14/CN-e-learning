@@ -65,3 +65,7 @@ npm run docs:build
 ## 许可证
 
 本项目采用 [MIT 许可证](LICENSE)，文档采用 [CC BY-NC-ND 4.0 许可证](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en)。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=TEHS-TECH/CN-e-learning&type=Date)](https://www.star-history.com/#TEHS-TECH/CN-e-learning&Date)
