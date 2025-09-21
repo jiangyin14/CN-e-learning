@@ -1,4 +1,6 @@
-# CN-e-learning: 电教委员指南
+![电教委员指南](docs\images\banner.png)
+
+![CC BY-NC-SA 4.0](https://camo.githubusercontent.com/0157aea42bfc560de71cdb5847ae8350e92d19b5da400c4d4529d5eb54559f0e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d43435f42592d2d4e432d2d53415f342e302d626c75652e737667)
 
 ## 项目介绍
 
@@ -23,7 +25,7 @@ CN-e-learning 是一个专注于帮助电教委员提升工作能力的指南项
     ```
 
 2. 安装依赖
- 
+
     ```bash
     npm install
     ```
@@ -64,7 +66,7 @@ npm run docs:build
 
 ## 许可证
 
-本项目采用 [MIT 许可证](LICENSE)，文档采用 [CC BY-NC-ND 4.0 许可证](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en)。
+本项目采用 [CC BY-NC-ND 4.0 许可证](LICENSE)。
 
 ## Star History
 
