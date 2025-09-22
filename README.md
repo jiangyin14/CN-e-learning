@@ -1,4 +1,4 @@
-![电教委员指南](docs\images\banner.png)
+![电教委员指南](https://github.com/TEHS-TECH/CN-e-learning/blob/main/docs/images/banner.png)
 
 ![CC BY-NC-SA 4.0](https://camo.githubusercontent.com/0157aea42bfc560de71cdb5847ae8350e92d19b5da400c4d4529d5eb54559f0e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d43435f42592d2d4e432d2d53415f342e302d626c75652e737667)
 
