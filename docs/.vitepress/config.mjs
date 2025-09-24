@@ -6,12 +6,10 @@ export default defineConfig({
   description: '教你如何做一名优秀的电教委员（网站装修中）',
   
   head: [
-    ['link', { rel: 'icon', href: 'https://wmimg.com/i/1169/2025/09/68c4fed991a78.png' }],
+    ['link', { rel: 'icon', href: 'https://i.p-i.vip/88/20250924-68d3e5db2b1f4.png' }],
     ['link', { rel: "stylesheet", href: "https://cdn.jsdmirror.com/npm/@fancyapps/ui/dist/fancybox.css" }],
     ['script', { src: "https://cdn.jsdmirror.com/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" }],
   ],
-
-  base: '/',
   
   markdown: {
     config: (md) => {
@@ -23,7 +21,7 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: '指南', link: '/guide/dev' }
+      { text: '指南', link: '/guide/' }
     ],
 
     sidebar: {
@@ -31,7 +29,7 @@ export default defineConfig({
         {
           text: '指南',
           items: [
-            { text: 'Getting Started', link: '/guide/dev' }
+            { text: 'Getting Started', link: '/guide/' }
           ]
         },
         {

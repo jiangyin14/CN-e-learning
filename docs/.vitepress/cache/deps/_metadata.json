@@ -1,43 +1,55 @@
 {
-  "hash": "2aa1d24d",
+  "hash": "5b54f4bf",
   "configHash": "3ba5ce80",
-  "lockfileHash": "24f007c5",
-  "browserHash": "9c10c00b",
+  "lockfileHash": "5d96edc3",
+  "browserHash": "e2c9bb8b",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "23f91144",
+      "fileHash": "4be0d431",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "ae40256b",
+      "fileHash": "9c4dac32",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "ddb9e685",
+      "fileHash": "a1b1412c",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "9c88ffb5",
+      "fileHash": "8b6f3846",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "0bd3345c",
+      "fileHash": "e925450a",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "56d856fe",
+      "fileHash": "29d36aca",
+      "needsInterop": false
+    },
+    "algoliasearch/lite": {
+      "src": "../../../../node_modules/algoliasearch/dist/lite/builds/browser.js",
+      "file": "algoliasearch_lite.js",
+      "fileHash": "10cc818f",
+      "needsInterop": false
+    },
+    "vue-instantsearch/vue3/es": {
+      "src": "../../../../node_modules/vue-instantsearch/vue3/es/index.js",
+      "file": "vue-instantsearch_vue3_es.js",
+      "fileHash": "b57a1501",
       "needsInterop": false
     }
   },
@@ -47,6 +59,9 @@
     },
     "chunk-JD3CXNQ6": {
       "file": "chunk-JD3CXNQ6.js"
+    },
+    "chunk-DC5AMYBS": {
+      "file": "chunk-DC5AMYBS.js"
     }
   }
 }
