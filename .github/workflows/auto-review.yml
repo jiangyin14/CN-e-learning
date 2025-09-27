@@ -1,0 +1,29 @@
+name: 学校信息自动审核
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  add-review-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 自动添加“待审核”标签
+        if: |
+          github.event.action == 'opened' ||
+          (github.event.action == 'labeled' && github.event.label.name == '学校信息申请')
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: 待审核
+
+      - name: 自动评论提示
+        if: |
+          github.event.action == 'opened' ||
+          (github.event.action == 'labeled' && github.event.label.name == '学校信息申请')
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            👋 感谢提交学校信息，请耐心等待审核人员处理
