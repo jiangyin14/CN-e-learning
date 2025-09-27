@@ -1,0 +1,112 @@
+name: 学校信息填报
+description: 请填写学校的相关信息，帮助其他电教委员
+title: "[学校信息]："
+labels: ["学校信息", "数据收集"]
+body:
+  - type: input
+    id: school_name
+    attributes:
+      label: 学校名称
+      description: 请填写完整的学校名称
+      placeholder: 天津市实验中学
+    validations:
+      required: true
+
+  - type: input
+    id: school_location
+    attributes:
+      label: 学校位置
+      description: 填写学校的区域、街道至门牌号
+      placeholder: 天津市 河西区 平山道 1号
+    validations:
+      required: true
+
+  - type: dropdown
+    id: school_type
+    attributes:
+      label: 学校类型
+      description: 选择学校类型
+      options:
+        - 幼儿园
+        - 小学
+        - 初级中学
+        - 高级中学
+        - 完全中学
+        - 九年一贯制学校
+        - 十二年一贯制学校
+        - 特殊学校
+        - 普通本科高校
+        - 高等职业学校
+        - 成人教育
+        - 中等职业学校
+        - 外籍人员子女学校
+    validations:
+      required: true
+
+  - type: input
+    id: info_center_location
+    attributes:
+      label: 信息中心位置
+      description: 填写学校的信息中心位置
+      placeholder: 例：思学楼C座 5楼 501
+
+  - type: checkboxes
+    id: display_type
+    attributes:
+      label: 班级大屏类型
+      description: 选择班级大屏类型
+      options:
+        - label: 投影仪
+        - label: 一体机
+        - label: 其他
+    validations:
+      required: true
+
+  - type: input
+    id: display_brand
+    attributes:
+      label: 班级大屏品牌
+      description: 填写班级大屏品牌
+      placeholder: 科大讯飞
+    validations:
+      required: true
+
+  - type: input
+    id: display_model
+    attributes:
+      label: 班级大屏型号
+      description: 填写班级大屏型号，可便于回收工具链查询
+      placeholder: ABC123
+
+  - type: input
+    id: display_os
+    attributes:
+      label: 班级大屏操作系统
+      description: 填写班级大屏操作系统
+      placeholder: Windows 10 Education
+    validations:
+      required: true
+
+  - type: dropdown
+    id: has_ice_point
+    attributes:
+      label: 冰点还原
+      description: 该校班级大屏是否安装冰点还原
+      options:
+        - 有
+        - 无
+        - 不确定
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: 补充信息
+      description: 填写其他相关但未在表单中列出的信息
+
+  - type: textarea
+    id: remarks
+    attributes:
+      label: 备注
+      description: 需要备注的其他事项
