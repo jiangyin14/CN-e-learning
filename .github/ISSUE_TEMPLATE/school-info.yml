@@ -1,7 +1,7 @@
 name: 学校信息填报
 description: 请填写学校的相关信息，帮助其他电教委员
-title: "[学校信息]："
-labels: ["学校信息", "数据收集"]
+title: "[学校信息填报]："
+labels: ["学校信息填报"]
 body:
   - type: input
     id: school_name
@@ -48,7 +48,7 @@ body:
     attributes:
       label: 信息中心位置
       description: 填写学校的信息中心位置
-      placeholder: 例：思学楼C座 5楼 501
+      placeholder: 思学楼C座 5楼 501
 
   - type: checkboxes
     id: display_type
