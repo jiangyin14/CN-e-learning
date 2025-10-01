@@ -52,8 +52,13 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'local'
-    }
+      provider: 'algolia'
+      options: {
+        appId: 'WKRPSXHOXG',
+        apiKey: 'b2935f5a1b0b0c6e6917bbe4b58494c2',
+        indexName: 'guide',
+      },
+    },
   },
 
   appearance: true,
