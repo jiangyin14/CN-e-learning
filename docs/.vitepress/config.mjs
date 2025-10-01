@@ -52,7 +52,7 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'algolia'
+      provider: 'algolia',
       options: {
         appId: 'WKRPSXHOXG',
         apiKey: 'b2935f5a1b0b0c6e6917bbe4b58494c2',
