@@ -1,7 +1,6 @@
 ---
 title: 电脑软键盘无法输入字符
 description: Windows10中触屏电脑的软键盘无法打字的问题的解决方案
-siderbar: tr
 ---
 
 # 电脑软键盘无法输入字符的解决方法
