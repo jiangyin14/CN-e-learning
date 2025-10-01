@@ -9,6 +9,12 @@ export default defineConfig({
     ['link', { rel: 'icon', href: 'https://i.p-i.vip/88/20250924-68d3e5db2b1f4.png' }],
     ['link', { rel: "stylesheet", href: "https://cdn.jsdmirror.com/npm/@fancyapps/ui/dist/fancybox.css" }],
     ['script', { src: "https://cdn.jsdmirror.com/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" }],
+    // Umami 统计脚本
+    ['script', { 
+      defer: true, 
+      src: 'https://umami.peter267.dpdns.org/script.js', 
+      'data-website-id': 'ac648300-d79f-46a2-bc8e-a818cf6e2af2' 
+    }]
   ],
   
   markdown: {
