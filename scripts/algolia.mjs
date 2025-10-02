@@ -3,7 +3,7 @@ import algoliasearch from 'algoliasearch';
 import { glob } from 'glob';
 import { readFileSync } from 'fs';
 import matter from 'gray-matter';
-import {-join } from 'path';
+import { join } from 'path';
 
 // 从环境变量中获取 Algolia 凭据（更安全）
 const { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;

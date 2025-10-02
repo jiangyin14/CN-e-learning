@@ -1,7 +1,8 @@
-![电教委员指南](https://github.com/TEHS-TECH/CN-e-learning/blob/main/docs/images/banner.png)
+# CN-e-learning 电教委员指南
 
-![CC BY-NC-SA 4.0](https://camo.githubusercontent.com/0157aea42bfc560de71cdb5847ae8350e92d19b5da400c4d4529d5eb54559f0e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d43435f42592d2d4e432d2d53415f342e302d626c75652e737667)
+![banner](./docs/public/images/banner.png)
 
+[![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
 CN-e-learning 是一个专注于帮助电教委员提升工作能力的指南项目。本指南由顶尖电教委编撰，内容涵盖多种计算机知识、错误应对方法等，旨在助力每一位电教委员成为优秀的技术支持角色。
 
@@ -49,8 +50,6 @@ npm run docs:build
 
 - `docs/`：文档内容目录
   - `index.md`：首页内容
-  - `guide/`：指南内容目录
-    - `dev.md`：开发相关指南
 - `.vitepress/`：VitePress 配置目录
 - `package.json`：项目依赖和脚本配置
 
@@ -63,6 +62,11 @@ npm run docs:build
 
 欢迎全国各学校的电教委员贡献经验和知识，具体贡献方式请关注项目后续更新的贡献指南。
 
+## 贡献者
+<a href="https://github.com/TEHS-TECH/CN-e-learning/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=TEHS-TECH/CN-e-learning" />
+</a>
+
 ## 📄 许可证
 
 <p xmlns:cc="http://creativecommons.org/ns#" >本作品已获得 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0 许可<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
@@ -74,4 +78,5 @@ npm run docs:build
 **如果这个项目对您有帮助，请点亮 Star ⭐！**
 
 ## 🔗 友情链接
-  - <image src="https://avatars.githubusercontent.com/u/184760810" height="18"/> **[Awesome-Iwb](https://github.com/awesome-iwb/awesome-iwb)** - ✨ 全网最全的 教学辅助软件/一体机软件 推荐清单
+- <image src="https://avatars.githubusercontent.com/u/184760810" height="18"/> **[Awesome-Iwb](https://github.com/awesome-iwb/awesome-iwb)** - ✨ 全网最全的 教学辅助软件/一体机软件 推荐清单
+- <image src="https://nav.jursin.top/acs.png" height="18"/> [**Awesome-Class-Softwares**](https://github.com/Jursin/Awesome-Class-Softwares) - 🌟 适用于班级一体机的优质软件合集

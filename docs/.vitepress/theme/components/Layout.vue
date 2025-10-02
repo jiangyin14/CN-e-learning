@@ -5,12 +5,20 @@
       <!-- 在这里添加 Twikoo 评论组件 -->
       <Twikoo />
     </template>
+    <template #layout-bottom>
+      <bsz />
+    </template>
+    <template #doc-footer-before>
+      <backtotop />
+    </template>
   </Layout>
 </template>
 
 <script setup>
 import Layout from 'vitepress/dist/client/theme-default/Layout.vue'
 import Twikoo from './Twikoo.vue'
+import bsz from "./bsz.vue";
+import backtotop from "./backtotop.vue";
 </script>
 
 <style scoped>
