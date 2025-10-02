@@ -16,40 +16,60 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Get issue body and title
-      id: get-issue-data
-      run: |
-        ISSUE_BODY=$(echo '${{ github.event.issue.body }}' | sed 's/"/\\"/g')
-        ISSUE_TITLE=$(echo '${{ github.event.issue.title }}' | sed 's/"/\\"/g')
-        echo "issue_body=${ISSUE_BODY}" >> $GITHUB_OUTPUT
-        echo "issue_title=${ISSUE_TITLE}" >> $GITHUB_OUTPUT
-
     - name: Check for school names in docs
       id: check-school-names
+      env:
+        ISSUE_TITLE: ${{ github.event.issue.title }}
+        ISSUE_BODY: ${{ github.event.issue.body }}
       run: |
-        # 获取issue中的所有文本（标题+内容）
-        ISSUE_TEXT="${{ steps.get-issue-data.outputs.issue_title }} ${{ steps.get-issue-data.outputs.issue_body }}"
+        # 创建临时文件来安全处理issue内容
+        echo "$ISSUE_TITLE" > issue_content.txt
+        echo "$ISSUE_BODY" >> issue_content.txt
         
         # 检查/main/docs/guide/school目录下的文件
-        SCHOOL_FILES=$(find main/docs/guide/school -type f -name "*.md" -o -name "*.txt" -o -name "*.json" 2>/dev/null || true)
+        SCHOOL_FILES=$(find main/docs/guide/school -type f 2>/dev/null || find ./main/docs/guide/school -type f 2>/dev/null || true)
         
         MATCH_FOUND="false"
         
         if [ -n "$SCHOOL_FILES" ]; then
           while IFS= read -r file; do
             if [ -f "$file" ]; then
-              FILENAME=$(basename "$file")
-              # 检查文件名是否包含在issue文本中
-              if echo "$ISSUE_TEXT" | grep -q "$FILENAME"; then
+              FILENAME=$(basename "$file" | cut -d. -f1)  # 只取文件名，去掉扩展名
+              echo "检查文件: $FILENAME"
+              
+              # 检查文件名是否包含在issue内容中
+              if grep -q "$FILENAME" issue_content.txt; then
                 echo "找到匹配的文件: $FILENAME"
                 MATCH_FOUND="true"
                 break
               fi
             fi
           done <<< "$SCHOOL_FILES"
+        else
+          echo "未找到学校文件目录: main/docs/guide/school"
+          # 尝试其他可能的路径
+          SCHOOL_FILES=$(find . -path "*/docs/guide/school/*" -type f 2>/dev/null || true)
+          if [ -n "$SCHOOL_FILES" ]; then
+            echo "在其他路径找到学校文件"
+            while IFS= read -r file; do
+              if [ -f "$file" ]; then
+                FILENAME=$(basename "$file" | cut -d. -f1)
+                echo "检查文件: $FILENAME"
+                if grep -q "$FILENAME" issue_content.txt; then
+                  echo "找到匹配的文件: $FILENAME"
+                  MATCH_FOUND="true"
+                  break
+                fi
+              fi
+            done <<< "$SCHOOL_FILES"
+          fi
         fi
         
         echo "match_found=$MATCH_FOUND" >> $GITHUB_OUTPUT
+        echo "检查结果: $MATCH_FOUND"
+        
+        # 清理临时文件
+        rm -f issue_content.txt
 
     - name: Process matching issue
       if: steps.check-school-names.outputs.match_found == 'true'
@@ -89,3 +109,11 @@ jobs:
           } catch (error) {
             console.error('处理issue时出错:', error);
           }
+
+    - name: Debug info
+      if: always()
+      run: |
+        echo "Issue Title: ${{ github.event.issue.title }}"
+        echo "Match Found: ${{ steps.check-school-names.outputs.match_found }}"
+        echo "当前目录结构:"
+        find . -name "docs" -type d 2>/dev/null || echo "未找到docs目录"
