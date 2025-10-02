@@ -27,7 +27,8 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: '指南', link: '/guide/' }
+      { text: '指南', link: '/guide/' },
+      { text: '多校联盟', link: '/guide/school' }
     ],
 
     sidebar: {
@@ -35,7 +36,7 @@ export default defineConfig({
         {
           text: '指南',
           items: [
-            { text: 'Getting Started', link: '/guide/' }
+            { text: '简介', link: '/guide/' }
           ]
         },
         {
@@ -43,6 +44,13 @@ export default defineConfig({
           items: [
             { text: '电脑软键盘无法输入字符', link: '/guide/the-soft-keyboard-cannot-type' },
             { text: 'Windows常见蓝屏错误代码', link: '/guide/bugcheck-codes' }
+          ]
+        },
+	    {
+          text: '多校联盟',
+          items: [
+            { text: '简介', link: '/guide/school' },
+            { text: '学校列表', link: '/guide/school-list' }
           ]
         }
       ]

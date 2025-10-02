@@ -26,7 +26,7 @@ features:
     details: 包括多种计算机知识，错误应对方法等
   - icon: 🏫
     title: 多校联盟
-    details: 由全国多所学校的电教委贡献学校专属信息（正在筹备）
+    details: 由全国多所学校的电教委贡献学校专属信息
   - icon: 😀
     title: 易于阅读
     details: 文档简洁明了，易于阅读

@@ -1,67 +1,31 @@
 {
-  "hash": "5b54f4bf",
-  "configHash": "3ba5ce80",
+  "hash": "9af12c84",
+  "configHash": "3974b3a7",
   "lockfileHash": "5d96edc3",
-  "browserHash": "e2c9bb8b",
+  "browserHash": "6008d974",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "4be0d431",
+      "fileHash": "f5637f16",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "9c4dac32",
+      "fileHash": "305c487d",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "a1b1412c",
-      "needsInterop": false
-    },
-    "vitepress > @vueuse/integrations/useFocusTrap": {
-      "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
-      "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "8b6f3846",
-      "needsInterop": false
-    },
-    "vitepress > mark.js/src/vanilla.js": {
-      "src": "../../../../node_modules/mark.js/src/vanilla.js",
-      "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "e925450a",
-      "needsInterop": false
-    },
-    "vitepress > minisearch": {
-      "src": "../../../../node_modules/minisearch/dist/es/index.js",
-      "file": "vitepress___minisearch.js",
-      "fileHash": "29d36aca",
-      "needsInterop": false
-    },
-    "algoliasearch/lite": {
-      "src": "../../../../node_modules/algoliasearch/dist/lite/builds/browser.js",
-      "file": "algoliasearch_lite.js",
-      "fileHash": "10cc818f",
-      "needsInterop": false
-    },
-    "vue-instantsearch/vue3/es": {
-      "src": "../../../../node_modules/vue-instantsearch/vue3/es/index.js",
-      "file": "vue-instantsearch_vue3_es.js",
-      "fileHash": "b57a1501",
+      "fileHash": "71440081",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-SYPOPCWC": {
-      "file": "chunk-SYPOPCWC.js"
-    },
     "chunk-JD3CXNQ6": {
       "file": "chunk-JD3CXNQ6.js"
-    },
-    "chunk-DC5AMYBS": {
-      "file": "chunk-DC5AMYBS.js"
     }
   }
 }
