@@ -1,0 +1,91 @@
+name: Process School Information Issue
+on:
+  issues:
+    types: [labeled, edited, reopened]
+
+jobs:
+  check-and-process-school-info:
+    runs-on: ubuntu-latest
+    if: |
+      contains(github.event.issue.labels.*.name, '学校信息填报') &&
+      (github.event.action == 'labeled' || github.event.action == 'edited' || github.event.action == 'reopened')
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Get issue body and title
+      id: get-issue-data
+      run: |
+        ISSUE_BODY=$(echo '${{ github.event.issue.body }}' | sed 's/"/\\"/g')
+        ISSUE_TITLE=$(echo '${{ github.event.issue.title }}' | sed 's/"/\\"/g')
+        echo "issue_body=${ISSUE_BODY}" >> $GITHUB_OUTPUT
+        echo "issue_title=${ISSUE_TITLE}" >> $GITHUB_OUTPUT
+
+    - name: Check for school names in docs
+      id: check-school-names
+      run: |
+        # 获取issue中的所有文本（标题+内容）
+        ISSUE_TEXT="${{ steps.get-issue-data.outputs.issue_title }} ${{ steps.get-issue-data.outputs.issue_body }}"
+        
+        # 检查/main/docs/guide/school目录下的文件
+        SCHOOL_FILES=$(find main/docs/guide/school -type f -name "*.md" -o -name "*.txt" -o -name "*.json" 2>/dev/null || true)
+        
+        MATCH_FOUND="false"
+        
+        if [ -n "$SCHOOL_FILES" ]; then
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then
+              FILENAME=$(basename "$file")
+              # 检查文件名是否包含在issue文本中
+              if echo "$ISSUE_TEXT" | grep -q "$FILENAME"; then
+                echo "找到匹配的文件: $FILENAME"
+                MATCH_FOUND="true"
+                break
+              fi
+            fi
+          done <<< "$SCHOOL_FILES"
+        fi
+        
+        echo "match_found=$MATCH_FOUND" >> $GITHUB_OUTPUT
+
+    - name: Process matching issue
+      if: steps.check-school-names.outputs.match_found == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const issueNumber = context.issue.number;
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          
+          try {
+            // 添加评论
+            await github.rest.issues.createComment({
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
+              body: '👋 您的学校信息已经上传至网站，感谢加入多校联盟！'
+            });
+            
+            // 更新标签
+            await github.rest.issues.setLabels({
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
+              labels: ['学校信息填报', '审核通过', '添加完成']
+            });
+            
+            // 关闭issue
+            await github.rest.issues.update({
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
+              state: 'closed'
+            });
+            
+            console.log(`成功处理issue #${issueNumber}`);
+          } catch (error) {
+            console.error('处理issue时出错:', error);
+          }
