@@ -6,12 +6,15 @@ hero:
   text: "做一名优秀的电教委员"
   tagline: 教你如何做一名优秀的电教委员
   image:
-    src: https://i.p-i.vip/88/20250924-68d3e5db2b1f4.png
+    src: /logo.png
     alt: Logo
   actions:
     - theme: brand
-      text: 快速入门
-      link: /guide/
+      text: 关于
+      link: /about
+    - theme: alt
+      text: 友情链接
+      link: /links
     - theme: alt
       text: GitHub
       link: https://github.com/TEHS-TECH/CN-e-learning
@@ -32,3 +35,4 @@ features:
     details: 文档简洁明了，易于阅读
 ---
 
+<HomeUnderline />

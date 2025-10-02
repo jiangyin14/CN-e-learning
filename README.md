@@ -1,6 +1,6 @@
-![电教委员指南](https://github.com/TEHS-TECH/CN-e-learning/blob/main/docs/images/banner.png)
+![banner](./docs/public/images/banner.png)
 
-![CC BY-NC-SA 4.0](https://camo.githubusercontent.com/0157aea42bfc560de71cdb5847ae8350e92d19b5da400c4d4529d5eb54559f0e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d43435f42592d2d4e432d2d53415f342e302d626c75652e737667)
+[![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
 
 CN-e-learning 是一个专注于帮助电教委员提升工作能力的指南项目。本指南由顶尖电教委编撰，内容涵盖多种计算机知识、错误应对方法等，旨在助力每一位电教委员成为优秀的技术支持角色。
