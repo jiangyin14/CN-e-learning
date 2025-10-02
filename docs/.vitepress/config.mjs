@@ -38,11 +38,13 @@ export default defineConfig({
     nav: [
       { text: '<i class="fa-solid fa-info-circle"></i> 关于', link: '/about' },
       { text: '<i class="fa-solid fa-link"></i> 友情链接', link: '/links' },
+      { text: '<i class="fa-solid fa-school"></i> 多校联盟', link: '/school' },
       { text: '<i class="fa-solid fa-question-circle"></i> 常见问题', link: '/faq/the-soft-keyboard-cannot-type' }
     ],
     sidebar: [
       { text: '关于', link: '/about' },
       { text: '友情链接', link: '/links' },
+      { text: '多校联盟', link: '/school' },
       {
         text: '常见问题',
         collapsed: false,
