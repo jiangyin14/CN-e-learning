@@ -36,34 +36,22 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.png',
     nav: [
-      { text: '指南', link: '/guide/' },
-      { text: '多校联盟', link: '/guide/school' }
+      { text: '<i class="fa-solid fa-info-circle"></i> 关于', link: '/about' },
+      { text: '<i class="fa-solid fa-link"></i> 友情链接', link: '/links' },
+      { text: '<i class="fa-solid fa-question-circle"></i> 常见问题', link: '/faq/the-soft-keyboard-cannot-type' }
     ],
-
-    sidebar: {
-      '/guide/': [
-        {
-          text: '指南',
-          items: [
-            { text: '简介', link: '/guide/' }
-          ]
-        },
-        {
-          text: '常见错误',
-          items: [
-            { text: '电脑软键盘无法输入字符', link: '/guide/the-soft-keyboard-cannot-type' },
-            { text: 'Windows常见蓝屏错误代码', link: '/guide/bugcheck-codes' }
-          ]
-        },
-	    {
-          text: '多校联盟',
-          items: [
-            { text: '简介', link: '/guide/school' },
-            { text: '学校列表', link: '/guide/school-list' }
-          ]
-        }
-      ]
-    },
+    sidebar: [
+      { text: '关于', link: '/about' },
+      { text: '友情链接', link: '/links' },
+      {
+        text: '常见问题',
+        collapsed: false,
+        items: [
+          { text: '电脑软键盘无法输入字符', link: '/faq/the-soft-keyboard-cannot-type' },
+          { text: 'Windows常见蓝屏错误代码', link: '/faq/bugcheck-codes' }
+        ]
+      }
+    ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/TEHS-TECH/CN-e-learning' },
