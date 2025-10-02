@@ -20,11 +20,11 @@ jobs:
       id: get-changed-files
       run: |
         # 获取最近commit中修改的文件
-        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- "main/docs/school/" "docs/school/" 2>/dev/null || true)
+        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- "main/docs/guide/school/" "docs/guide/school/" 2>/dev/null || true)
         
         if [ -z "$CHANGED_FILES" ]; then
           # 如果没有找到，尝试其他可能的路径
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- "*/docs/school/*" 2>/dev/null || true)
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- "*/docs/guide/school/*" 2>/dev/null || true)
         fi
         
         echo "changed_files<<EOF" >> $GITHUB_OUTPUT
