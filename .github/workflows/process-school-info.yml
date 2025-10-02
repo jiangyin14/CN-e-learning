@@ -1,119 +1,149 @@
-name: Process School Information Issue
+name: Process School Information on Commit
 on:
-  issues:
-    types: [labeled, edited, reopened]
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
   check-and-process-school-info:
     runs-on: ubuntu-latest
-    if: |
-      contains(github.event.issue.labels.*.name, '学校信息填报') &&
-      (github.event.action == 'labeled' || github.event.action == 'edited' || github.event.action == 'reopened')
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Check for school names in docs
-      id: check-school-names
-      env:
-        ISSUE_TITLE: ${{ github.event.issue.title }}
-        ISSUE_BODY: ${{ github.event.issue.body }}
+    - name: Get changed files in school directory
+      id: get-changed-files
       run: |
-        # 创建临时文件来安全处理issue内容
-        echo "$ISSUE_TITLE" > issue_content.txt
-        echo "$ISSUE_BODY" >> issue_content.txt
+        # 获取最近commit中修改的文件
+        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- "main/docs/guide/school/" "docs/guide/school/" 2>/dev/null || true)
         
-        # 检查/main/docs/guide/school目录下的文件
-        SCHOOL_FILES=$(find main/docs/guide/school -type f 2>/dev/null || find ./main/docs/guide/school -type f 2>/dev/null || true)
-        
-        MATCH_FOUND="false"
-        
-        if [ -n "$SCHOOL_FILES" ]; then
-          while IFS= read -r file; do
-            if [ -f "$file" ]; then
-              FILENAME=$(basename "$file" | cut -d. -f1)  # 只取文件名，去掉扩展名
-              echo "检查文件: $FILENAME"
-              
-              # 检查文件名是否包含在issue内容中
-              if grep -q "$FILENAME" issue_content.txt; then
-                echo "找到匹配的文件: $FILENAME"
-                MATCH_FOUND="true"
-                break
-              fi
-            fi
-          done <<< "$SCHOOL_FILES"
-        else
-          echo "未找到学校文件目录: main/docs/guide/school"
-          # 尝试其他可能的路径
-          SCHOOL_FILES=$(find . -path "*/docs/guide/school/*" -type f 2>/dev/null || true)
-          if [ -n "$SCHOOL_FILES" ]; then
-            echo "在其他路径找到学校文件"
-            while IFS= read -r file; do
-              if [ -f "$file" ]; then
-                FILENAME=$(basename "$file" | cut -d. -f1)
-                echo "检查文件: $FILENAME"
-                if grep -q "$FILENAME" issue_content.txt; then
-                  echo "找到匹配的文件: $FILENAME"
-                  MATCH_FOUND="true"
-                  break
-                fi
-              fi
-            done <<< "$SCHOOL_FILES"
-          fi
+        if [ -z "$CHANGED_FILES" ]; then
+          # 如果没有找到，尝试其他可能的路径
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- "*/docs/guide/school/*" 2>/dev/null || true)
         fi
         
-        echo "match_found=$MATCH_FOUND" >> $GITHUB_OUTPUT
-        echo "检查结果: $MATCH_FOUND"
+        echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+        echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "检测到的变更文件:"
+        echo "$CHANGED_FILES"
+
+    - name: Extract school names from changed files
+      id: extract-school-names
+      if: steps.get-changed-files.outputs.changed_files != ''
+      run: |
+        CHANGED_FILES="${{ steps.get-changed-files.outputs.changed_files }}"
+        
+        SCHOOL_NAMES=""
+        while IFS= read -r file; do
+          if [ -n "$file" ] && [ -f "$file" ]; then
+            # 从文件名提取学校名称（去掉路径和扩展名）
+            FILENAME=$(basename "$file")
+            SCHOOL_NAME=$(echo "$FILENAME" | sed 's/\.[^.]*$//')  # 去掉文件扩展名
+            if [ -n "$SCHOOL_NAME" ]; then
+              SCHOOL_NAMES="${SCHOOL_NAMES}${SCHOOL_NAME}\n"
+              echo "提取的学校名称: $SCHOOL_NAME"
+            fi
+          fi
+        done <<< "$CHANGED_FILES"
+        
+        echo "school_names<<EOF" >> $GITHUB_OUTPUT
+        echo -e "$SCHOOL_NAMES" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: Find related issues
+      id: find-issues
+      if: steps.extract-school-names.outputs.school_names != ''
+      run: |
+        # 创建包含学校名称的临时文件
+        echo -e "${{ steps.extract-school-names.outputs.school_names }}" > school_names.txt
+        
+        echo "开始搜索相关issue..."
+        
+        # 使用GitHub CLI搜索包含学校名称的issue
+        ISSUE_LIST=""
+        while IFS= read -r school_name; do
+          if [ -n "$school_name" ]; then
+            echo "搜索包含 '$school_name' 的issue..."
+            
+            # 搜索标题或内容包含学校名称且带有"学校信息填报"标签的open issue
+            ISSUES=$(gh api search/issues -q "repo:${{ github.repository }} \"$school_name\" label:\"学校信息填报\" state:open" --jq '.items[].number' 2>/dev/null || true)
+            
+            if [ -n "$ISSUES" ]; then
+              for issue_num in $ISSUES; do
+                echo "找到相关issue: #$issue_num"
+                ISSUE_LIST="${ISSUE_LIST}${issue_num}\n"
+              done
+            fi
+          fi
+        done < school_names.txt
+        
+        echo "issue_list<<EOF" >> $GITHUB_OUTPUT
+        echo -e "$ISSUE_LIST" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
         
         # 清理临时文件
-        rm -f issue_content.txt
+        rm -f school_names.txt
 
-    - name: Process matching issue
-      if: steps.check-school-names.outputs.match_found == 'true'
+    - name: Process matching issues
+      if: steps.find-issues.outputs.issue_list != ''
       uses: actions/github-script@v7
+      env:
+        ISSUE_LIST: ${{ steps.find-issues.outputs.issue_list }}
       with:
         script: |
-          const issueNumber = context.issue.number;
+          const issueList = process.env.ISSUE_LIST.split('\n').filter(num => num.trim() !== '');
           const owner = context.repo.owner;
           const repo = context.repo.repo;
           
-          try {
-            // 添加评论
-            await github.rest.issues.createComment({
-              owner: owner,
-              repo: repo,
-              issue_number: issueNumber,
-              body: '👋 您的学校信息已经上传至网站，感谢加入多校联盟！'
-            });
+          console.log(`找到 ${issueList.length} 个需要处理的issue:`, issueList);
+          
+          for (const issueNumber of issueList) {
+            if (!issueNumber) continue;
             
-            // 更新标签
-            await github.rest.issues.setLabels({
-              owner: owner,
-              repo: repo,
-              issue_number: issueNumber,
-              labels: ['学校信息填报', '审核通过', '添加完成']
-            });
-            
-            // 关闭issue
-            await github.rest.issues.update({
-              owner: owner,
-              repo: repo,
-              issue_number: issueNumber,
-              state: 'closed'
-            });
-            
-            console.log(`成功处理issue #${issueNumber}`);
-          } catch (error) {
-            console.error('处理issue时出错:', error);
+            try {
+              console.log(`处理issue #${issueNumber}`);
+              
+              // 添加评论
+              await github.rest.issues.createComment({
+                owner: owner,
+                repo: repo,
+                issue_number: parseInt(issueNumber),
+                body: '👋 您的学校信息已经上传至网站，感谢加入多校联盟！'
+              });
+              
+              // 更新标签
+              await github.rest.issues.setLabels({
+                owner: owner,
+                repo: repo,
+                issue_number: parseInt(issueNumber),
+                labels: ['学校信息填报', '审核通过', '添加完成']
+              });
+              
+              // 关闭issue
+              await github.rest.issues.update({
+                owner: owner,
+                repo: repo,
+                issue_number: parseInt(issueNumber),
+                state: 'closed'
+              });
+              
+              console.log(`成功处理issue #${issueNumber}`);
+            } catch (error) {
+              console.error(`处理issue #${issueNumber}时出错:`, error);
+            }
           }
 
     - name: Debug info
       if: always()
       run: |
-        echo "Issue Title: ${{ github.event.issue.title }}"
-        echo "Match Found: ${{ steps.check-school-names.outputs.match_found }}"
-        echo "当前目录结构:"
-        find . -name "docs" -type d 2>/dev/null || echo "未找到docs目录"
+        echo "变更文件: ${{ steps.get-changed-files.outputs.changed_files }}"
+        echo "提取的学校名称: ${{ steps.extract-school-names.outputs.school_names }}"
+        echo "找到的issue列表: ${{ steps.find-issues.outputs.issue_list }}"
+        echo "当前commit: ${{ github.sha }}"
