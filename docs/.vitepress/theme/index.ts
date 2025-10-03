@@ -37,11 +37,11 @@ export default {
       mediumZoom('.main img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
     };
     const cleanLightGallery = () => {
-      const leftover = document.querySelector('.lg-container')
-      if (leftover) leftover.remove()
+      document.querySelectorAll('.lg-container').forEach(el => el.remove())
     };
     onMounted(() => {
-      initZoom();
+      initZoom()
+      cleanLightGallery()
     });
     watch(
       () => route.path,
