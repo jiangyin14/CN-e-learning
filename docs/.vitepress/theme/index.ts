@@ -36,12 +36,19 @@ export default {
       // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
       mediumZoom('.main img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
     };
+    const cleanLightGallery = () => {
+      document.querySelectorAll('.lg-container').forEach(el => el.remove())
+    };
     onMounted(() => {
-      initZoom();
+      initZoom()
+      cleanLightGallery()
     });
     watch(
       () => route.path,
-      () => nextTick(() => initZoom())
-    );
+      () => nextTick(() => {
+        initZoom()
+        cleanLightGallery()
+      })
+    )
   }
 } satisfies Theme

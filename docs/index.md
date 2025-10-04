@@ -10,7 +10,7 @@ hero:
     alt: Logo
   actions:
     - theme: brand
-      text: 关于
+      text: 从这里开始
       link: /about
     - theme: alt
       text: 友情链接

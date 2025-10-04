@@ -46,6 +46,13 @@ export default defineConfig({
       { text: '友情链接', link: '/links' },
       { text: '多校联盟', link: '/school' },
       {
+        text: '从这里开始',
+        collapsed: false,
+        items: [
+          { text: '在开始之前', link: '/guide/before-starting'}
+        ]
+      }, 
+      {
         text: '常见问题',
         collapsed: false,
         items: [
