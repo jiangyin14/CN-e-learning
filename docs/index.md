@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 从这里开始
-      link: /about
+      link: /guide/before-starting
     - theme: alt
       text: 友情链接
       link: /links
