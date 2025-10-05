@@ -46,10 +46,10 @@ export default defineConfig({
       { text: '友情链接', link: '/links' },
       { text: '多校联盟', link: '/school' },
       {
-        text: '从这里开始',
+        text: '指南',
         collapsed: false,
         items: [
-          { text: '0.在开始之前', link: '/guide/before-starting'}
+          { text: '前言', link: '/guide/before-starting'}
         ]
       }, 
       {
@@ -57,14 +57,15 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '电脑软键盘无法输入字符', link: '/faq/the-soft-keyboard-cannot-type' },
-          { text: 'Windows常见蓝屏错误代码', link: '/faq/bugcheck-codes' },
-          { text: '在Microsoft Office中启用flash内容', link: '/faq/how-to-enable-flash-contents-in-microsoft-office' }
+          { text: 'Windows 常见蓝屏错误代码', link: '/faq/bugcheck-codes' },
+          { text: '在 Microsoft Office 中启用 flash 内容', link: '/faq/how-to-enable-flash-contents-in-microsoft-office' }
         ]
       }
     ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/TEHS-TECH/CN-e-learning' },
+      { icon: 'qq', link: 'https://qm.qq.com/q/XOabZnlEMm' },
       { 
         icon: {
           svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 919"><defs><style>.a{fill:#1068af}.b{fill:#26a03d}</style></defs><path class="a" d="M643.3 134s-30.4-16.6-59.6-8.4L98.8 260.4 227.6 35.3S246.5-1.3 319.3.03l405 .6-77.5 135.5z"/><path class="a" d="M803.8 43l-82.2 143.8s20.7 19 26.6 40.6l72.1 275.9-278.2 84.3 100.2-160-31.3-120.7s-16.4-47.7-64-42.1c-.7.1-1.5.2-2.2.3-49.3 7.4-507.2 135-507.2 135s-36 10.2-37.6 46.1c0 0-.6 38.7 22.6 74.1l203 349 74.6-130.4s-23.7-21.3-26-32.1l-82-292.9 274.9-78.6s14.9-7.4 20.9 5.6l-120 150.3 40.9 134.4s17.8 29.6 59.6 29.8l528.6-144.9s35.1-6.7 25.1-59.8c0 0 1.5-19.8-14.8-52.1L803.8 43z"/><path class="b" d="M371.2 780.6s28.1 12 46.3 11.2l510.7-140.6-117.2 204.8s-28.5 57.2-96.4 57.1l-422.5 5.7 79.1-138.2z"/>'
