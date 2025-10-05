@@ -1,4 +1,4 @@
-# Windows常见蓝屏报错代码
+# Windows 常见蓝屏报错代码
 
 ![蓝屏](https://i.p-i.vip/88/20251001-68dcb6e9f1a1c.webp)
 
