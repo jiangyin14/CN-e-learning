@@ -7,7 +7,6 @@
     </template>
     <template #layout-bottom>
       <bsz />
-      <IcpInfo />
     </template>
     <template #doc-footer-before>
       <backtotop />
@@ -20,7 +19,6 @@ import Layout from 'vitepress/dist/client/theme-default/Layout.vue'
 import Twikoo from './Twikoo.vue'
 import bsz from "./bsz.vue";
 import backtotop from "./backtotop.vue";
-import IcpInfo from './IcpInfo.vue';
 </script>
 
 <style scoped>
