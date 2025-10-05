@@ -57,7 +57,8 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '电脑软键盘无法输入字符', link: '/faq/the-soft-keyboard-cannot-type' },
-          { text: 'Windows常见蓝屏错误代码', link: '/faq/bugcheck-codes' }
+          { text: 'Windows常见蓝屏错误代码', link: '/faq/bugcheck-codes' },
+          { text: '在Microsoft Office中启用flash内容', link: '/faq/how-to-enable-flash-contents-in-microsoft-office' }
         ]
       }
     ],
