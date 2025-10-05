@@ -57,8 +57,9 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '电脑软键盘无法输入字符', link: '/faq/the-soft-keyboard-cannot-type' },
-          { text: 'Windows 常见蓝屏错误代码', link: '/faq/bugcheck-codes' },
-          { text: '在 Microsoft Office 中启用 flash 内容', link: '/faq/how-to-enable-flash-contents-in-microsoft-office' }
+          { text: 'Windows常见蓝屏错误代码', link: '/faq/bugcheck-codes' },
+          { text: '在Microsoft Office中启用flash内容', link: '/faq/how-to-enable-flash-contents-in-microsoft-office' },
+          { text: '常见品牌的教学一体机/交互白板适用的触摸校准/触摸驱动 汇总', link: '/faq/Common-Touch-Driver-Summaries-for-All-in-One-Teaching-Displays.md' }
         ]
       }
     ],
