@@ -22,7 +22,7 @@ body:
       required: true
 
   - type: input
-    id: school_location
+    id: school_location_details
     attributes:
       label: 学校位置
       description: 填写学校的详细地址（区域、街道至门牌号）
