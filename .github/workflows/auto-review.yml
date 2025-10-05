@@ -14,7 +14,7 @@ jobs:
       - name: 自动添加"待审核"标签
         if: |
           github.event.action == 'opened' ||
-          (github.event.action == 'labeled' && github.event.label.name == '学校信息申请')
+          (github.event.action == 'labeled' && github.event.label.name == '学校信息申请') && contains(github.event.issue.title, '学校信息填报')
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: 待审核
@@ -22,7 +22,7 @@ jobs:
       - name: 自动评论提示
         if: |
           github.event.action == 'opened' ||
-          (github.event.action == 'labeled' && github.event.label.name == '学校信息申请')
+          (github.event.action == 'labeled' && github.event.label.name == '学校信息申请') && contains(github.event.issue.title, '学校信息填报')
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.issue.number }}
