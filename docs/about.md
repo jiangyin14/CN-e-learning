@@ -24,4 +24,4 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=TEHS-TECH/CN-e-learning&type=Date)](https://www.star-history.com/#TEHS-TECH/CN-e-learning&Date)
 
-**如果这个项目对您有帮助，请[**点亮 Star ⭐**](https://github.com/TEHS-TECH/CN-e-learning)！**
+**如果这个项目对您有帮助，请[**点亮 Star ⭐**](https://github.com/Jursin/CN-e-learning)！**
