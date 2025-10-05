@@ -1,3 +1,9 @@
+<!-- 
+    在本文“学校列表”表格部分中的数据来源/构成如下("school_location"、"school_type"、"school_name"默认来自issue)：
+        地区："school_location"
+        学校类型："school_type"
+        学校：["school_name"](/school/list/"school_name")
+-->
 # 多校联盟
 
 “**多校联盟**”是一个由《电教委员指南》创建的学校大屏信息汇总平台。它主要帮助电教委员快速查看全国各地学校的大屏应用实例，为自身工作提供参考模板和灵感。
