@@ -1,3 +1,5 @@
+#本template中需要用在docs/index.md“学校列表”中的内容有"school_location"、"school_type"、"school_name"
+#其余内容将会被填写在docs/schools/"school_name".md中
 name: 学校信息填报
 description: 请填写学校的相关信息，帮助其他电教委员
 title: "[学校信息填报]："
@@ -11,20 +13,29 @@ body:
       placeholder: 天津市实验中学
     validations:
       required: true
+  
+  - type: input
+    id: school_location
+    attributes:
+      label: 地区 #对应docs/index.md学校列表中的“地区”列
+      description: 填写学校所在的省市区级行政单位
+      placeholder: 天津市河西区
+    validations:
+      required: true
 
   - type: input
     id: school_location
     attributes:
       label: 学校位置
-      description: 填写学校的区域、街道至门牌号
-      placeholder: 天津市 河西区 平山道 1号
+      description: 填写学校的详细地址（区域、街道至门牌号）
+      placeholder: 天津市河西区平山道 1号
     validations:
       required: true
 
   - type: dropdown
     id: school_type
     attributes:
-      label: 学校类型
+      label: 学校类型 #对应docs/index.md学校列表中的“学校类型”列
       description: 选择学校类型
       options:
         - 幼儿园
