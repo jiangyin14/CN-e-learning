@@ -15,7 +15,7 @@ body:
   - type: input
     id: school_location
     attributes:
-      label: 地区 #对应docs/index.md学校列表中的“地区”列
+      label: 地区
       description: 填写学校所在的省市区级行政单位
       placeholder: 天津市河西区
     validations:
@@ -33,7 +33,7 @@ body:
   - type: dropdown
     id: school_type
     attributes:
-      label: 学校类型 #对应docs/index.md学校列表中的“学校类型”列
+      label: 学校类型
       description: 选择学校类型
       options:
         - 幼儿园
