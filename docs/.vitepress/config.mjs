@@ -49,7 +49,7 @@ export default defineConfig({
         text: '从这里开始',
         collapsed: false,
         items: [
-          { text: '在开始之前', link: '/guide/before-starting'}
+          { text: '0.在开始之前', link: '/guide/before-starting'}
         ]
       }, 
       {
